@@ -1861,7 +1861,7 @@
       margin-top: 1.5rem;
     }
 
-    /* MyASP 申込フォーム */
+    /* MyASP 申込フォーム（PCでもSP縦並び） */
     .myasp-form-wrap {
       margin: 0.75rem calc(-1 * var(--wrap-pad)) 0;
       padding: 0 var(--wrap-pad);
@@ -1871,11 +1871,146 @@
     .myasp-form-wrap .content_title {
       display: none;
     }
-    .myasp-form-wrap .content_form {
-      max-width: 100%;
-    }
+    .myasp-form-wrap .content_form,
     .myasp-form-wrap .myForm {
+      max-width: 100%;
       font-family: var(--font-serif);
+    }
+    .myasp-form-wrap .content_form .input_unit {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 0 0.35rem !important;
+      box-sizing: border-box !important;
+    }
+    .myasp-form-wrap .content_form .input_unit .my_column {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      float: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      vertical-align: top !important;
+      box-sizing: border-box !important;
+    }
+    .myasp-form-wrap .content_form .input_unit .my_left.my_column {
+      width: 100% !important;
+      padding: 0.25rem 0 0.35rem !important;
+    }
+    .myasp-form-wrap .content_form .input_unit .my_right.my_column {
+      width: 100% !important;
+      padding: 0 0 0.65rem !important;
+    }
+    .myasp-form-wrap .label_frame {
+      width: 100% !important;
+    }
+    .myasp-form-wrap .form_input_label {
+      font-family: var(--font-serif) !important;
+      font-weight: 700 !important;
+      font-size: clamp(0.95rem, 4vw, 1.05rem) !important;
+      color: var(--brand-navy) !important;
+      white-space: normal !important;
+      line-height: 1.5 !important;
+    }
+    .myasp-form-wrap .form_input_input {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      font-family: var(--font-serif) !important;
+    }
+    .myasp-form-wrap .radiobutton_frame {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 0.45rem !important;
+      width: 100% !important;
+      margin: 0 0 0.45rem !important;
+    }
+    .myasp-form-wrap .radiobutton_input {
+      flex-shrink: 0 !important;
+      padding-top: 0.15rem !important;
+    }
+    .myasp-form-wrap .radiobutton_label,
+    .myasp-form-wrap .paymode_radio {
+      flex: 1 !important;
+      font-family: var(--font-serif) !important;
+      font-weight: 700 !important;
+      font-size: clamp(0.9rem, 3.8vw, 1rem) !important;
+      color: var(--brand-navy) !important;
+      line-height: 1.5 !important;
+    }
+    .myasp-form-wrap .payment-method-price-area {
+      margin-top: 0.25rem !important;
+      text-align: right !important;
+    }
+    .myasp-form-wrap .form_input_submit {
+      width: 100%;
+      margin: 0.75rem 0 0;
+      padding: 0;
+      border: none;
+      background: none;
+      text-align: center;
+    }
+    .myasp-form-wrap .myasp-submit-btn {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+      background: none;
+      overflow: hidden;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(254, 138, 149, 0.28);
+      animation: cta-pulse 2.2s ease-in-out infinite;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .myasp-form-wrap .myasp-submit-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 38%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.42) 50%,
+        transparent 100%
+      );
+      animation: cta-shine 2.8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .myasp-form-wrap .myasp-submit-btn__bg {
+      width: 100%;
+      height: auto;
+      min-height: 4.15rem;
+      display: block;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+    .myasp-form-wrap .myasp-submit-btn__text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -52%);
+      width: 98%;
+      padding: 0 0.15rem;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 5.2vw, 1.62rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--brand-white);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      z-index: 3;
     }
 
     .disclaimer {
@@ -2044,6 +2179,14 @@
         width: 98%;
       }
       .cta-button-visual__bg {
+        min-height: 3.85rem;
+      }
+      .myasp-form-wrap .myasp-submit-btn__text {
+        font-size: clamp(0.98rem, 4.8vw, 1.42rem);
+        letter-spacing: -0.02em;
+        width: 98%;
+      }
+      .myasp-form-wrap .myasp-submit-btn__bg {
         min-height: 3.85rem;
       }
 
@@ -2790,7 +2933,10 @@
                 </div>
 
                 <div class="submit form_input_submit">
-                  <input type="submit" value="今すぐ申し込む">
+                  <button type="submit" class="myasp-submit-btn">
+                    <img class="myasp-submit-btn__bg" src="assets/cta-button-bg.png" alt="" width="960" height="156" loading="lazy" />
+                    <span class="myasp-submit-btn__text">今すぐ申し込む</span>
+                  </button>
                 </div>
 
                 <input type="hidden" id="server_url" value="https://lead-sh1.com/">
