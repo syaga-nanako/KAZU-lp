@@ -1077,6 +1077,9 @@
       z-index: 1;
       line-height: 1.45;
     }
+    .compare-vs__line-keep {
+      white-space: nowrap;
+    }
     .compare-vs__cell--nowrap .compare-vs__body {
       white-space: normal;
     }
@@ -2026,7 +2029,15 @@
       z-index: 3;
     }
 
-    .disclaimer {
+    .program-flow__title {
+      display: inline-block;
+      font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--brand-navy);
+      border-bottom: 3px solid rgba(254, 138, 149, 0.45);
+      padding-bottom: 0.15rem;
+      margin: 0.75rem 0 0.65rem;
+    }
       list-style: none;
       padding: 0;
       font-size: 0.75rem;
@@ -2252,7 +2263,7 @@
 
   <header class="fv">
     <h1 class="visually-hidden">【奇跡の若返りシリーズ】首こりセルフケア</h1>
-    <img class="fv__img" src="assets/fv-main.png" alt="" width="1200" height="1600" loading="eager" fetchpriority="high" />
+    <img class="fv__img" src="assets/fv-main.png" alt="" width="682" height="1024" loading="eager" fetchpriority="high" />
   </header>
 
   <main>
@@ -2644,7 +2655,7 @@
           <div class="compare-vs__row">
             <div class="compare-vs__label">やり方</div>
             <div class="compare-vs__cell compare-vs__cell--other">
-              <span class="compare-vs__body">その場しのぎに<br>なりがち</span>
+              <span class="compare-vs__body"><span class="compare-vs__line-keep">その場しのぎに</span><br>なりがち</span>
             </div>
             <div class="compare-vs__cell compare-vs__cell--ours">
               <span class="compare-vs__body">全15本を順番<br>どおりに進める</span>
@@ -2824,7 +2835,7 @@
           </table>
           <p class="body-text">「動画を見て真似する」だけで終わらず、 <strong>なぜそうなのか</strong>も理解できる構成です。</p>
           <p class="body-text">※自己流にアレンジせず、<strong>①のルールどおり・順番どおり</strong>に進めてください。</p>
-          <p class="body-text"><strong>流れ</strong></p>
+          <p class="program-flow__title">流れ</p>
           <p class="body-text">まずは７日間、届いた動画を順番に視聴して実践してみて下さい。</p>
           <p class="body-text">８日目以降は、セルフケアの動画のみ毎日こつこつと続けてください。</p>
         </div>
