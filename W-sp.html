@@ -36,10 +36,17 @@
     *, *::before, *::after { box-sizing: border-box; }
     html {
       overflow-x: hidden;
+      overflow-y: auto;
       overscroll-behavior-y: none;
       background: var(--brand-white);
     }
-    body.lp-sp {
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      overflow: visible;
+    }
+    .lp-sp {
       margin: 0 auto;
       max-width: var(--max-width);
       font-family: var(--font-serif);
@@ -49,8 +56,6 @@
       background: var(--brand-white);
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      overscroll-behavior-y: none;
     }
     img { max-width: 100%; height: auto; display: block; }
     h1, h2, p, ul, ol { margin: 0; }
@@ -60,7 +65,11 @@
       padding-left: var(--wrap-pad);
       padding-right: var(--wrap-pad);
     }
-    .fv { padding: 0; }
+    .fv {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
     .fv__img { width: 100%; display: block; }
 
     .section {
@@ -1317,14 +1326,23 @@
       margin: 0 calc(-1 * var(--wrap-pad)) 1.15rem;
     }
     .program-sample-video {
-      background: var(--brand-white);
-    }
-    .program-sample-video__player {
+      position: relative;
       width: 100%;
-      height: auto;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: calc(var(--max-width) * 9 / 16);
+      overflow: hidden;
+      line-height: 0;
+      background: var(--brand-white);
+      contain: layout style paint;
+    }
+    .program-sample-video__frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
       display: block;
       vertical-align: top;
-      background: var(--brand-white);
+      background: #000;
       box-shadow: 0 6px 22px rgba(35, 59, 105, 0.1);
     }
     .program-sample-video__note {
@@ -2121,12 +2139,15 @@
     }
 
     .visually-hidden {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      border: 0;
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
     }
 
     @media (max-width: 480px) {
@@ -2257,9 +2278,19 @@
     @media (min-width: 768px) {
       :root { --wrap-pad: clamp(1.25rem, 5vw, 2.5rem); }
     }
+
+    @media (min-width: 481px) {
+      html {
+        background: var(--brand-navy);
+      }
+      .lp-sp {
+        box-shadow: 0 0 0 1px rgba(35, 59, 105, 0.06);
+      }
+    }
   </style>
 </head>
-<body class="lp-sp">
+<body>
+  <div class="lp-sp">
 
   <header class="fv">
     <h1 class="visually-hidden">【奇跡の若返りシリーズ】首こりセルフケア</h1>
@@ -2814,10 +2845,14 @@
         <div class="program-intro">
           <div class="program-sample-video-wrap">
             <div class="program-sample-video">
-              <video class="program-sample-video__player" autoplay muted playsinline loop controls preload="auto" width="480" aria-label="プログラムのサンプル動画">
-                <source src="assets/sample-video.mp4" type="video/mp4" />
-                お使いのブラウザは動画の再生に対応していません。
-              </video>
+              <iframe
+                class="program-sample-video__frame"
+                src="assets/sample-video-frame.html"
+                title="プログラムのサンプル動画（自動再生・音声なし）"
+                loading="lazy"
+                allow="autoplay"
+                tabindex="-1"
+              ></iframe>
             </div>
             <p class="program-sample-video__note">※ 一部抜粋</p>
           </div>
@@ -3179,6 +3214,7 @@
     </nav>
     <p class="site-footer__copy">Copyright(c) 2026 若返りセラピスト All Rights Reserved.</p>
   </footer>
+  </div>
 
   <script src="https://lead-sh1.com/js/validation.js?av=20260616141747"></script>
   <script>
@@ -3218,6 +3254,42 @@
 
       render();
       setInterval(render, 1000);
+    })();
+
+    (function () {
+      if (!window.matchMedia("(min-width: 481px)").matches) return;
+
+      var skipSelector = "input, textarea, select, [contenteditable='true']";
+
+      function isNestedScrollable(el) {
+        if (!el || el === document.documentElement || el === document.body) return false;
+        var oy = window.getComputedStyle(el).overflowY;
+        if (oy !== "auto" && oy !== "scroll" && oy !== "overlay") return false;
+        return el.scrollHeight > el.clientHeight + 1;
+      }
+
+      document.addEventListener(
+        "wheel",
+        function (e) {
+          if (e.ctrlKey) return;
+          if (e.target.closest(skipSelector)) return;
+
+          var node = e.target;
+          while (node && node !== document.body) {
+            if (isNestedScrollable(node)) {
+              var maxScroll = node.scrollHeight - node.clientHeight;
+              if ((e.deltaY > 0 && node.scrollTop < maxScroll) || (e.deltaY < 0 && node.scrollTop > 0)) {
+                return;
+              }
+            }
+            node = node.parentElement;
+          }
+
+          window.scrollBy(0, e.deltaY);
+          e.preventDefault();
+        },
+        { passive: false, capture: true }
+      );
     })();
   </script>
 </body>
