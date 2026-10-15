@@ -43,27 +43,36 @@
   <video autoplay playsinline loop preload="metadata" aria-label="プログラムのサンプル動画">
     <source src="sample-video.mp4" type="video/mp4" />
   </video>
-  <button type="button" class="sound">音声をオン</button>
+  <button type="button" class="sound" aria-pressed="false">音声をオン</button>
   <script>
     const video = document.querySelector("video");
     const button = document.querySelector(".sound");
 
+    function showSoundState(on) {
+      button.textContent = on ? "音声をオフ" : "音声をオン";
+      button.setAttribute("aria-pressed", on ? "true" : "false");
+    }
+
     function playWithSound() {
       video.muted = false;
       video.volume = 1;
-      return video.play();
+      return video.play().then(() => {
+        showSoundState(true);
+      });
     }
 
     button.addEventListener("click", () => {
-      playWithSound().then(() => {
-        button.hidden = true;
-      }).catch(() => {});
+      if (video.muted) {
+        playWithSound().catch(() => {});
+        return;
+      }
+      video.muted = true;
+      showSoundState(false);
     });
 
-    playWithSound().then(() => {
-      button.hidden = true;
-    }).catch(() => {
+    playWithSound().catch(() => {
       video.muted = true;
+      showSoundState(false);
       video.play();
     });
   </script>
