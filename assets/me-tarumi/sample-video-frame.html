@@ -19,11 +19,53 @@
       display: block;
       object-fit: contain;
     }
+    .sound {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      margin: 0;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      background: rgba(0, 60, 90, 0.92);
+      color: #fff;
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <video autoplay muted playsinline loop preload="metadata" aria-label="プログラムのサンプル動画（自動再生・音声なし）">
+  <video autoplay playsinline loop preload="metadata" aria-label="プログラムのサンプル動画">
     <source src="sample-video.mp4" type="video/mp4" />
   </video>
+  <button type="button" class="sound">音声をオン</button>
+  <script>
+    const video = document.querySelector("video");
+    const button = document.querySelector(".sound");
+
+    function playWithSound() {
+      video.muted = false;
+      video.volume = 1;
+      return video.play();
+    }
+
+    button.addEventListener("click", () => {
+      playWithSound().then(() => {
+        button.hidden = true;
+      }).catch(() => {});
+    });
+
+    playWithSound().then(() => {
+      button.hidden = true;
+    }).catch(() => {
+      video.muted = true;
+      video.play();
+    });
+  </script>
 </body>
 </html>
