@@ -30,6 +30,7 @@
       --sp-band-light: 2.5rem;
       --sp-heading-bottom: 1rem;
       --text-body: clamp(1.15rem, 4.726vw, 1.307rem);
+      --flow-gap: 1.75rem;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -568,7 +569,7 @@
       line-height: 1.6;
     }
 
-    .section--faq { padding-top: 1.5rem; }
+    .section--faq { padding-top: 0; }
     .faq-head { text-align: center; margin-bottom: 1.35rem; }
     .faq-head__title {
       display: flex;
@@ -656,7 +657,7 @@
       font-size: clamp(1.28rem, 5.2vw, 1.45rem);
       letter-spacing: 0.06em;
     }
-    .final-message .program-title { margin-top: 2.8rem; }
+    .final-message .program-title { margin-top: var(--flow-gap); }
     .final-product {
       margin: 1.15rem 0 0.4rem;
       text-align: center;
@@ -707,7 +708,7 @@
     .title-cut {
       display: block;
       width: min(100%, 26rem);
-      margin: 0.35rem auto 1.15rem;
+      margin: var(--flow-gap) auto;
     }
     .deco-down {
       display: block;
@@ -747,40 +748,41 @@
       max-width: none;
       margin-left: -0.75rem;
       margin-right: -0.75rem;
-      margin-bottom: 0.35rem;
+      margin-bottom: var(--flow-gap);
     }
     .fv-cta { padding: 0.35rem var(--wrap-pad) 0.5rem; background: transparent; }
     .soft-section {
       position: relative;
-      padding: 1.7rem var(--wrap-pad) 1.85rem;
+      padding: 0 var(--wrap-pad);
       background: transparent;
     }
+    .prose { margin-top: var(--flow-gap); margin-bottom: var(--flow-gap); }
     .phrase {
       display: block;
       width: min(100%, 24rem);
       height: auto;
-      margin: 0.35rem 0 1rem;
+      margin: var(--flow-gap) 0;
     }
     .phrase--good {
       width: min(50%, 12rem);
-      margin-top: 0.15rem;
-      margin-bottom: 0.7rem;
+      margin-top: var(--flow-gap);
+      margin-bottom: var(--flow-gap);
       margin-left: 0;
       margin-right: auto;
-    }
-    .phrase--bonus {
-      margin-top: 1.7rem;
     }
     .program-title {
       display: block;
       width: min(100%, 22rem);
       height: auto;
-      margin: 0.2rem auto 0.85rem;
+      margin: var(--flow-gap) auto;
     }
     .program-title--left {
       width: 100%;
       margin-left: 0;
       margin-right: auto;
+    }
+    .soft-section > .body-text:last-child {
+      margin-bottom: var(--flow-gap);
     }
     .plain-strong {
       font-weight: 900;
@@ -1032,7 +1034,7 @@
 
       <!-- ========== お客様の声 ========== -->
       <section>
-        <header class="soft-section" style="padding-bottom:0.4rem;">
+        <header class="soft-section">
           <h2 class="visually-hidden">実践された方からは、こんなお声も届いています</h2>
           <img class="title-cut voice-banner" src="assets/me-tarumi/voice-banner.png" alt="実践された方からは、こんなお声も届いています" />
         </header>
