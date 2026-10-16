@@ -120,11 +120,20 @@
     }
     .em-red { color: var(--price-accent); }
 
-    .fv { position: relative; }
-    .fv-cta {
-      padding: 0.85rem var(--wrap-pad) 1.15rem;
-      background: var(--brand-white);
+    .fv { position: relative; z-index: 2; }
+    .fv > img {
+      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 22px), transparent 100%);
+      mask-image: linear-gradient(#000 0, #000 calc(100% - 22px), transparent 100%);
     }
+    .fv-cta {
+      position: relative;
+      z-index: 2;
+      margin-top: -4.2%;
+      margin-bottom: -4.2%;
+      padding: 0 var(--wrap-pad);
+      background: transparent;
+    }
+    .fv-cta .cta-image { margin: 0; }
 
     @keyframes cta-shine {
       0% { transform: translateX(-130%) skewX(-18deg); }
@@ -729,10 +738,27 @@
     }
     .cta-image {
       position: relative;
+      z-index: 3;
       display: block;
       width: 100%;
       margin: 0.35rem 0;
       line-height: 0;
+    }
+    .cta-bridge {
+      margin-top: calc((100% + 2 * var(--wrap-pad)) * -0.105);
+      margin-bottom: calc((100% + 2 * var(--wrap-pad)) * -0.105);
+    }
+    .fade-before-cta {
+      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 80px), transparent 100%);
+      mask-image: linear-gradient(#000 0, #000 calc(100% - 80px), transparent 100%);
+    }
+    .fade-after-cta {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
+    }
+    .fade-late.fade-after-cta {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 98.5%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 98.5%, transparent 100%);
     }
     .cta-image img {
       width: 100%;
@@ -750,7 +776,7 @@
       margin-right: -0.75rem;
       margin-bottom: var(--flow-gap);
     }
-    .fv-cta { padding: 0.35rem var(--wrap-pad) 0.5rem; background: transparent; }
+    .fv-cta { padding: 0 var(--wrap-pad); background: transparent; }
     .soft-section {
       position: relative;
       padding: 0 var(--wrap-pad);
@@ -935,7 +961,7 @@
       <!-- ========== 悩み（画像そのまま） ========== -->
       <section class="shot">
         <h2 class="visually-hidden">鏡を見るたび、目の下が気になっていませんか？</h2>
-        <img class="fade-late" src="assets/me-tarumi/empathy.png" alt="鏡を見るたび、目の下が気になっていませんか。たるみ、ふくらみや影、老けて見える、アイクリームやマッサージを試してもまた気になる。" width="800" height="1067" loading="lazy" />
+        <img class="fade-late fade-after-cta" src="assets/me-tarumi/empathy.png" alt="鏡を見るたび、目の下が気になっていませんか。たるみ、ふくらみや影、老けて見える、アイクリームやマッサージを試してもまた気になる。" width="800" height="1067" loading="lazy" />
       </section>
       <img class="deco-arrow deco-arrow--to-title" src="assets/me-tarumi/deco-arrow.png" alt="" width="800" height="800" />
 
@@ -1121,11 +1147,11 @@
           <p class="body-text">そう決めてしまう前に、<br>まず7日間だけ、<br>今までとは違う方法を試してみてください。</p>
           <p class="body-text">目の下ばかりを触るのではなく、<br>首から。<br>あごから。<br>頭から。<br>そして最後に目元へ。<br>身体のつながりを考えながら、<br>順番に整えていきましょう。</p>
         </div>
-        <img src="assets/me-tarumi/price-card.png" alt="奇跡の若返りシリーズ 目の下たるみ解消セルフケア オンライン7Daysプログラム。通常価格9,980円。今回限定価格6,980円（税込）。" width="800" height="1067" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
-        <a class="cta-image" href="REPLACE_WITH_CHECKOUT_URL">
+        <img class="fade-before-cta" src="assets/me-tarumi/price-card.png" alt="奇跡の若返りシリーズ 目の下たるみ解消セルフケア オンライン7Daysプログラム。通常価格9,980円。今回限定価格6,980円（税込）。" width="800" height="1067" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
+        <a class="cta-image cta-bridge" href="REPLACE_WITH_CHECKOUT_URL">
           <img src="assets/me-tarumi/cta-price.png" alt="今すぐ7日間プログラムを始める" width="800" height="267" />
         </a>
-        <img src="assets/me-tarumi/bonus-1.png" alt="購入者限定 豪華3大特典プレゼント。特典1 7Days実践チェックシート。7日間の実践内容や、目元・身体の変化を簡単に記録。スタート前と7日後を比較しながら、自分の変化を確認できます。" width="800" height="763" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
+        <img class="fade-after-cta" src="assets/me-tarumi/bonus-1.png" alt="購入者限定 豪華3大特典プレゼント。特典1 7Days実践チェックシート。7日間の実践内容や、目元・身体の変化を簡単に記録。スタート前と7日後を比較しながら、自分の変化を確認できます。" width="800" height="763" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
         <img src="assets/me-tarumi/bonus-2.png" alt="特典2 朝・夜セルフケア早見表。今日はどのケアをやればいい？そんなときに、その日の状態に合わせて、本編のどのセルフケアを選べばいいかがひと目で分かる早見表です。" width="800" height="577" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
         <img src="assets/me-tarumi/bonus-3.png" alt="特典3 ビフォーアフター撮影ガイド。明るさ・角度・距離など、比較しやすい撮影方法をまとめたガイド。7日間の変化を、写真で確認しやすくなります。" width="800" height="615" loading="lazy" style="width:calc(100% + 2 * var(--wrap-pad));max-width:none;margin-left:calc(-1 * var(--wrap-pad));" />
         <img class="phrase phrase--bonus" src="assets/me-tarumi/phrase-bonus-close.png" alt="7日間の実践を、もっと続けやすく、分かりやすく。" />
