@@ -122,15 +122,14 @@
 
     .fv { position: relative; z-index: 2; }
     .fv > img {
-      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 22px), transparent 100%);
-      mask-image: linear-gradient(#000 0, #000 calc(100% - 22px), transparent 100%);
+      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 16px), transparent 100%);
+      mask-image: linear-gradient(#000 0, #000 calc(100% - 16px), transparent 100%);
     }
     .fv-cta {
       position: relative;
       z-index: 2;
-      margin-top: -4.2%;
-      margin-bottom: -4.2%;
-      padding: 0 var(--wrap-pad);
+      margin: 0;
+      padding: 1.05rem var(--wrap-pad) 1.2rem;
       background: transparent;
     }
     .fv-cta .cta-image { margin: 0; }
@@ -745,20 +744,20 @@
       line-height: 0;
     }
     .cta-bridge {
-      margin-top: calc((100% + 2 * var(--wrap-pad)) * -0.105);
-      margin-bottom: calc((100% + 2 * var(--wrap-pad)) * -0.105);
+      margin-top: 0.35rem;
+      margin-bottom: 0.85rem;
     }
     .fade-before-cta {
-      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 80px), transparent 100%);
-      mask-image: linear-gradient(#000 0, #000 calc(100% - 80px), transparent 100%);
+      -webkit-mask-image: linear-gradient(#000 0, #000 calc(100% - 48px), transparent 100%);
+      mask-image: linear-gradient(#000 0, #000 calc(100% - 48px), transparent 100%);
     }
     .fade-after-cta {
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
-      mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 16px);
     }
     .fade-late.fade-after-cta {
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 98.5%, transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 0, #000 16px, #000 98.5%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 98.5%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 98.5%, transparent 100%);
     }
     .cta-image img {
       width: 100%;
@@ -776,7 +775,7 @@
       margin-right: -0.75rem;
       margin-bottom: var(--flow-gap);
     }
-    .fv-cta { padding: 0 var(--wrap-pad); background: transparent; }
+    .fv-cta { padding: 1.05rem var(--wrap-pad) 1.2rem; background: transparent; }
     .soft-section {
       position: relative;
       padding: 0 var(--wrap-pad);
